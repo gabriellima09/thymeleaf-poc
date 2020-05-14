@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head><title>Produtos</title></head>
+	<body><h3><b>Produtos</b></h3>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Descricao</th>
+					<th>Preco</th>
+                    <th>Alterar</th>
+                    <th>Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="produto : ${produtos}">
+					<td th:text="${produto.nome}">Nome</td>
+					<td th:text="${produto.descricao}">Descricao</td>
+					<td th:text="${produto.preco}">Preco</td>
+                    <td><a th:href="${'/produtos/preAlteracao?id=' + produto.id}">Alterar</a></td>
+					<td><a th:href="${'/produtos/excluir?id=' + produto.id}">Excluir</a></td>                    
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<form action="/produtos/salvar" method="post" th:object="${produtoEditavel}">
+			<!-- essa tag hidden será o id do produto necessário para identificar no GET por id qual produto queremos alterar -->
+			<input type="hidden" name="id" th:field="*{id}"/>
+			<label>Nome: </label><input type="text" name="nome" th:field="*{nome}"/>
+			<label>Descricao: </label><input type="text"  name="descricao" th:field="*{descricao}"/>
+			<label>Preco: </label><input type="text" name="preco" th:field="*{preco}"/>
+			<button type="submit" id="salvar">Enviar</button>	
+		</form>
+	</body>
+</html>
