@@ -8,7 +8,8 @@
 					<th>Nome</th>
 					<th>Descricao</th>
 					<th>Preco</th>
-                    <th>Alterar</th>
+					<th>Alterar</th>
+					<th>Adicionar no Carrinho</th>
                     <th>Excluir</th>
 				</tr>
 			</thead>
@@ -17,7 +18,8 @@
 					<td th:text="${produto.nome}">Nome</td>
 					<td th:text="${produto.descricao}">Descricao</td>
 					<td th:text="${produto.preco}">Preco</td>
-                    <td><a th:href="${'/produtos/preAlteracao?id=' + produto.id}">Alterar</a></td>
+					<td><a th:href="${'/produtos/preAlteracao?id=' + produto.id}">Alterar</a></td>
+					<td><a th:href="${'/carrinho/add?id=' + produto.id}">Adicionar no Carrinho</a></td>
 					<td><a th:href="${'/produtos/excluir?id=' + produto.id}">Excluir</a></td>                    
 				</tr>
 			</tbody>
